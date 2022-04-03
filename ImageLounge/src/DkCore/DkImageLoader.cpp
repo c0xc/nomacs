@@ -1503,7 +1503,7 @@ void DkImageLoader::rotateImage(double angle) {
 		return;
 	}
 
-	QImage img = DkImage::rotate(mCurrentImage->image(), qRound(angle));
+	QImage img = mCurrentImage->getLoader()->rotate(mCurrentImage->image(), qRound(angle));
 
 	QImage thumb = DkImage::createThumb(mCurrentImage->image());
 	mCurrentImage->getThumb()->setImage(thumb);
