@@ -86,7 +86,9 @@ class DllCoreExport DkMetaDataT {
 
 public:
 	DkMetaDataT();
-
+	bool isNull();
+	QSharedPointer<DkMetaDataT> copy() const;
+	void update(const QSharedPointer<DkMetaDataT> &other);
 
 	enum ExifOrientationState {
 		or_illegal = -1,
@@ -163,7 +165,7 @@ protected:
 		dirty,
 	};
 
-	Exiv2::Image::AutoPtr mExifImg;
+	Exiv2::Image::AutoPtr mExifImg; //TODO std::unique_ptr<Exiv2::Image> (and all other *::AutoPtr)
 	QString mFilePath;
 	QStringList mQtKeys;
 	QStringList mQtValues;
